@@ -66,6 +66,28 @@ function loadshipcg() {
 	});
 }
 
+function loadshipvoice() {
+	//parse api_start2 master data to generate kanmusu CGs including version number
+	$.each(shipgraph, function(index, ShipGraph){
+		if ((ShipGraph.api_sortno != 0) && (ShipGraph.api_id < 500))) {
+			
+			//loop to be implemeneted later
+			//1-28, exclude suck line 22
+			/*
+			for (LineNum = 0; LineNum <= 28; LineNum++) {
+				if (LineNum == 22) LineNum++
+			}
+			*/
+
+			if (ShipGraph.api_version == 1) {
+				$("#embeds").append(imglink+ServerIP+"/kcs/sound/kc"+ShipGraph.api_filename+"3.mp3\">");
+			} else { 
+				$("#embeds").append(imglink+ServerIP+"/kcs/sound/kc"+ShipGraph.api_filename+"3.mp3?version="+ShipGraph.api_version+"\">");
+			}
+		}
+	});
+}
+
 //calls Interface.js local function before generating interface links
 function loadinterface() {
 	uilinkage = defineInterface();
